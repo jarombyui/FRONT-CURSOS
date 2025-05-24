@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <g fill="#FFFFFF">
+    <path d="M80 180h60v140H80z"/>
+    <path d="M150 180h320v40H150z"/>
+    <text x="150" y="280" font-family="Arial" font-size="72" font-weight="bold">ISSEGUREX</text>
+    <text x="150" y="320" font-family="Arial" font-size="24">CENTRO DE LA SEGURIDAD INDUSTRIAL</text>
+  </g>
+</svg> 
