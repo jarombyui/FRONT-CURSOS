@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import CourseFiltersSidebar from '../components/CourseFiltersSidebar';
 import CourseSearchBar from '../components/CourseSearchBar';
+import { useNavigate } from 'react-router-dom';
 
 // Cursos de ejemplo inspirados en la imagen (puedes cambiar imágenes y textos reales)
 const allCourses = [
@@ -167,6 +168,7 @@ const Courses = () => {
   const [search, setSearch] = useState('');
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
 
   // Lógica de filtrado y búsqueda
   const filteredCourses = allCourses.filter(course => {
@@ -223,7 +225,8 @@ const Courses = () => {
                 paginatedCourses.map((course) => (
                   <div
                     key={course.id}
-                    className="bg-white rounded-2xl overflow-hidden shadow-xl flex flex-col hover:-translate-y-1 transition-all duration-300 border border-gray-200"
+                    className="bg-white rounded-2xl overflow-hidden shadow-xl flex flex-col hover:-translate-y-1 transition-all duration-300 border border-gray-200 cursor-pointer"
+                    onClick={() => navigate(`/cursos/${course.id}`)}
                   >
                     <div className="relative h-36">
                       <img
@@ -242,14 +245,13 @@ const Courses = () => {
                       <div className="flex items-center justify-between mt-auto">
                         <span className="text-base font-bold text-accent">S/. {course.price.toFixed(2)}</span>
                         <button
-                          onClick={() => {
-                            const phone = '51947726382';
-                            const message = `Hola, me interesa el curso de ${course.title}`;
-                            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+                          onClick={(e) => {
+                            e.stopPropagation(); // Evitar que el clic en el botón active el clic del div
+                            navigate('/pago', { state: { courseId: course.id, price: course.price, title: course.title } });
                           }}
-                          className="bg-accent text-white px-3 py-1 rounded-lg font-bold text-xs hover:bg-accent/90 transition-all duration-300 shadow"
+                          className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 text-sm"
                         >
-                          Inscribirse
+                          Inscribirme
                         </button>
                       </div>
                     </div>

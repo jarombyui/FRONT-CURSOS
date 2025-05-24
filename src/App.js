@@ -11,6 +11,8 @@ import ServicesPage from './pages/ServicesPage';
 import SuggestionBox from './pages/SuggestionBox';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import CourseDetail from './pages/CourseDetail';
+import PaymentPage from './pages/PaymentPage';
 
 // Componente para rutas protegidas
 const PrivateRoute = ({ children }) => {
@@ -80,10 +82,12 @@ function App() {
                             <Route path="/" element={<Navigate to="/dashboard" />} />
                             <Route path="/about" element={<About />} />
                             <Route path="/cursos" element={<Courses />} />
+                            <Route path="/cursos/:id" element={<CourseDetail />} />
                             <Route path="/servicios" element={<ServicesPage />} />
                             <Route path="/sugerencias" element={<SuggestionBox />} />
                             <Route path="/blog" element={<Blog />} />
                             <Route path="/contacto" element={<Contact />} />
+                            <Route path="/pago" element={<PaymentPage />} />
                         </Routes>
                     </main>
                     <Footer />
